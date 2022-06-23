@@ -9,5 +9,3 @@ conn = redis.from_url(redis_url)
 que = Queue(connection=conn)
 
 app = Flask(__name__)
-
-from app import views
