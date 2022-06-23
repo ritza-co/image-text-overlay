@@ -1,4 +1,4 @@
-from app import app, que
+from app import app
 from app.utils import process_job
 import os
 from flask import render_template, request, send_file, redirect, url_for
@@ -10,6 +10,10 @@ def index():
 
 @app.route('/handle_submit', methods=['POST'])
 def handle_submit():
+    redis_url = os.getenv('REDIS_URL')
+    conn = redis.from_url(redis_url)
+
+    que = Queue(connection=conn)
     result = que.enqueue(process_job, request.form['overlay_text'], request.files)
     return redirect(url_for(''))
 
