@@ -10,6 +10,7 @@ from PIL import Image, ImageFont, ImageDraw
 def index():
     return render_template("index.html")
 
+
 @app.route('/handle_submit', methods=['POST'])
 def handle_submit():
     que = Queue(connection=conn)
