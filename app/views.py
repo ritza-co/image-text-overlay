@@ -17,12 +17,12 @@ def handle_submit():
 
     logo = request.files['logo']
     logo = Image.open(logo)
-    logo.save("logo.jpeg")
+    logo.save("logo.png")
 
     time.sleep(2)
     print("Yamuka")
 
-    with open("logo.jpeg", "rb") as img_file:
+    with open("logo.png", "rb") as img_file:
         print("res")
         b64_string = base64.b64encode(img_file.read())
         print("string is ", b64_string)
