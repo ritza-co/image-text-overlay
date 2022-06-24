@@ -16,7 +16,7 @@ def handle_submit():
     conn = redis.from_url(redis_url)
 
     que = Queue(connection=conn)
-    result = que.enqueue(process_job, request.form['overlay_text'], request.files)
+    result = que.enqueue(process_job(request.form['overlay_text'], request.files))
     return redirect(url_for(''))
 
     # overlay_text = request.form['overlay_text']
