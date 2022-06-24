@@ -13,6 +13,8 @@ def process_job(form_data_dict):
     image_editable = ImageDraw.Draw(my_image)
     x, y = (width - 510, height-400)
 
+    print("Job started")
+
     if len(overlay_text) > 25:
         string_center_index = len(overlay_text) / 2
         overlay_text = overlay_text[:int(string_center_index)] + "\n" + overlay_text[int(string_center_index):]
