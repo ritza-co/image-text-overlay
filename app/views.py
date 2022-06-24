@@ -14,7 +14,11 @@ def handle_submit():
     que = Queue(connection=conn)
 
     #form_data_dict = {'overlay_text': request.form['overlay_text'], 'logo': request.files}
-    result = que.enqueue(process_job, request.files['logo'])
+    import base64
+
+    with open(request.files['logo'], "rb") as img_file:
+        b64_string = base64.b64encode(img_file.read())
+    result = que.enqueue(process_job, b64_string)
     time.sleep(4)
     return send_file("../result.jpg", mimetype='image/jpg', as_attachment=True, download_name="result.jpg")
 

@@ -1,4 +1,5 @@
 from flask import send_file
+import io, base64
 from PIL import Image, ImageFont, ImageDraw
 
 def process_job(logo):
@@ -28,9 +29,10 @@ def process_job(logo):
     image_editable.text((x,y), overlay_text, (247, 250, 251), font=title_font)
 
     if logo:
+        img = Image.open(io.BytesIO(base64.decodebytes(bytes(logo, "utf-8"))))
         #logo = logo['logo']
-        logo = Image.open(logo)
-        logo_width, logo_height = logo.size
+        #logo = Image.open(logo)
+        logo_width, logo_height = img.size
         logo = logo.convert("RGBA")
         my_image.paste(logo, (width - logo_width, height - logo_height))
 
