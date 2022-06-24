@@ -1,7 +1,6 @@
 from app import app
 from app.utils import process_job
-import os
-import redis
+import redis, time, os
 from rq import Queue
 from flask import render_template, request, send_file, redirect, url_for
 from PIL import Image, ImageFont, ImageDraw
