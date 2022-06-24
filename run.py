@@ -1,11 +1,5 @@
-from app import app, conn
-from rq import Worker, Queue, Connection
-
-listen = ['high', 'default', 'low']
+from app import app
 
 if __name__ == "__main__":
-    with Connection(conn):
-        worker = Worker(map(Queue, listen))
-        worker.work()
     app.run()
     
