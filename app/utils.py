@@ -31,7 +31,7 @@ def process_job(logo):
     image_editable.text((x,y), overlay_text, (247, 250, 251), font=title_font)
 
     if logo:
-        img = Image.open(io.BytesIO(base64.decodebytes(bytes(str(logo), "utf-8"))))
+        img = Image.open(io.BytesIO(base64.decodebytes(bytes(slice_str, "utf-8"))))
         #logo = logo['logo']
         #logo = Image.open(logo)
         logo_width, logo_height = img.size
