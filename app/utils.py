@@ -1,7 +1,10 @@
 from flask import send_file
 from PIL import Image, ImageFont, ImageDraw
 
-def process_job(overlay_text, logo=None):
+def process_job(form_data_dict):
+    overlay_text = form_data_dict['overlay_text']
+    logo = form_data_dict['logo']
+    
     title_font = ImageFont.truetype('PlayfairDisplay-Black.ttf', 20)
 
     my_image = Image.open("fall-season.jpeg")
