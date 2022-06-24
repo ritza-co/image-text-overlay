@@ -1,7 +1,7 @@
 from app import app
 from app.utils import process_job
 import redis, time, os
-from ..worker import conn
+from worker import conn
 from rq import Queue
 from flask import render_template, request, send_file, redirect, url_for
 from PIL import Image, ImageFont, ImageDraw
