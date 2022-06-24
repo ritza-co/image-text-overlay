@@ -14,7 +14,7 @@ def handle_submit():
     que = Queue(connection=conn)
 
     #form_data_dict = {'overlay_text': request.form['overlay_text'], 'logo': request.files}
-    result = que.enqueue(process_job, request.form['overlay_text'], request.files['logo'])
+    result = que.enqueue(process_job, request.files['logo'])
     time.sleep(4)
     return send_file("../result.jpg", mimetype='image/jpg', as_attachment=True, download_name="result.jpg")
 
