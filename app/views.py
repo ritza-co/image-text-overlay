@@ -1,7 +1,6 @@
-from app import app
+from app import app, conn
 from app.utils import process_job
 import redis, time, os
-from worker import conn
 from rq import Queue
 from flask import render_template, request, send_file, redirect, url_for
 from PIL import Image, ImageFont, ImageDraw
@@ -9,7 +8,6 @@ from PIL import Image, ImageFont, ImageDraw
 @app.route("/", methods=["GET"])
 def index():
     return render_template("index.html")
-
 
 @app.route('/handle_submit', methods=['POST'])
 def handle_submit():
