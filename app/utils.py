@@ -35,7 +35,7 @@ def process_job(logo):
         #logo = logo['logo']
         #logo = Image.open(logo)
         logo_width, logo_height = img.size
-        logo = logo.convert("RGBA")
+        logo = img.convert("RGBA")
         my_image.paste(logo, (width - logo_width, height - logo_height))
 
     my_image.save("result.jpg")
