@@ -4,7 +4,7 @@ from PIL import Image, ImageFont, ImageDraw
 def process_job(form_data_dict):
     overlay_text = form_data_dict['overlay_text']
     logo = form_data_dict['logo']
-    
+
     title_font = ImageFont.truetype('PlayfairDisplay-Black.ttf', 20)
 
     my_image = Image.open("fall-season.jpeg")
@@ -33,4 +33,5 @@ def process_job(form_data_dict):
         my_image.paste(logo, (width - logo_width, height - logo_height))
 
     my_image.save("result.jpg")
-    return send_file("../result.jpg", mimetype='image/jpg', as_attachment=True, download_name="result.jpg")
+    print("Job processed")
+    return "Done"

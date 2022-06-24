@@ -18,8 +18,8 @@ def handle_submit():
 
     form_data_dict = {'overlay_text': request.form['overlay_text'], 'logo': request.files}
     result = que.enqueue(process_job, form_data_dict)
-    time.sleep(3)
-    return result.result
+    time.sleep(4)
+    return send_file("../result.jpg", mimetype='image/jpg', as_attachment=True, download_name="result.jpg")
 
     # overlay_text = request.form['overlay_text']
     # title_font = ImageFont.truetype('PlayfairDisplay-Black.ttf', 20)
