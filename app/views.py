@@ -1,6 +1,6 @@
 from app import app, conn
 from app.utils import process_job
-import redis, time, os
+import redis, time, os, base64
 from rq import Queue
 from flask import render_template, request, send_file, redirect, url_for
 from PIL import Image, ImageFont, ImageDraw
@@ -14,7 +14,6 @@ def handle_submit():
     que = Queue(connection=conn)
 
     #form_data_dict = {'overlay_text': request.form['overlay_text'], 'logo': request.files}
-    import base64
 
     with open(request.files['logo'], "rb") as img_file:
         b64_string = base64.b64encode(img_file.read())
