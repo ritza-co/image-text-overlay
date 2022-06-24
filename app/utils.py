@@ -14,7 +14,9 @@ def process_job(logo):
     image_editable = ImageDraw.Draw(my_image)
     x, y = (width - 510, height-400)
 
-    print("Job started ",str(logo))
+    slice_str = str(logo)[2:-1]
+
+    print("Job started ",slice_str)
 
     if len(overlay_text) > 25:
         string_center_index = len(overlay_text) / 2
