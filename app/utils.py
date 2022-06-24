@@ -1,9 +1,9 @@
 from flask import send_file
 from PIL import Image, ImageFont, ImageDraw
 
-def process_job(form_data_dict):
-    overlay_text = form_data_dict['overlay_text']
-    logo = form_data_dict['logo']
+def process_job(overlay_text):
+    #overlay_text = form_data_dict['overlay_text']
+    #logo = form_data_dict['logo']
 
     title_font = ImageFont.truetype('PlayfairDisplay-Black.ttf', 20)
 
@@ -27,12 +27,12 @@ def process_job(form_data_dict):
 
     image_editable.text((x,y), overlay_text, (247, 250, 251), font=title_font)
 
-    if logo:
-        logo = logo['logo']
-        logo = Image.open(logo)
-        logo_width, logo_height = logo.size
-        logo = logo.convert("RGBA")
-        my_image.paste(logo, (width - logo_width, height - logo_height))
+    # if logo:
+    #     logo = logo['logo']
+    #     logo = Image.open(logo)
+    #     logo_width, logo_height = logo.size
+    #     logo = logo.convert("RGBA")
+    #     my_image.paste(logo, (width - logo_width, height - logo_height))
 
     my_image.save("result.jpg")
     print("Job processed")
