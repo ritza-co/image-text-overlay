@@ -1,6 +1,7 @@
 from app import app
 from app.utils import process_job
 import redis, time, os
+from ..worker import conn
 from rq import Queue
 from flask import render_template, request, send_file, redirect, url_for
 from PIL import Image, ImageFont, ImageDraw
@@ -11,9 +12,6 @@ def index():
 
 @app.route('/handle_submit', methods=['POST'])
 def handle_submit():
-    redis_url = os.getenv('REDIS_URL')
-    conn = redis.from_url(redis_url)
-
     que = Queue(connection=conn)
 
     form_data_dict = {'overlay_text': request.form['overlay_text'], 'logo': request.files}
