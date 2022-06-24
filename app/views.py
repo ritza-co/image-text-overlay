@@ -15,7 +15,14 @@ def handle_submit():
 
     #form_data_dict = {'overlay_text': request.form['overlay_text'], 'logo': request.files}
 
-    with open(request.files['logo'], "rb") as img_file:
+    logo = request.files['logo']
+    logo = Image.open(logo)
+    logo.save("logo.jpg")
+
+    time.sleep(2)
+    print("Yamuka")
+
+    with open("logo.jpg", "rb") as img_file:
         print("res")
         b64_string = base64.b64encode(img_file.read())
         print("string is ", b64_string)
