@@ -19,7 +19,7 @@ def handle_submit():
     form_data_dict = {'overlay_text': request.form['overlay_text'], 'logo': request.files}
     result = que.enqueue(process_job, form_data_dict)
     time.sleep(3)
-    return redirect(url_for(''))
+    return redirect(url_for('/'))
 
     # overlay_text = request.form['overlay_text']
     # title_font = ImageFont.truetype('PlayfairDisplay-Black.ttf', 20)
