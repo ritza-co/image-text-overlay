@@ -2,8 +2,8 @@ from flask import send_file
 import io, base64
 from PIL import Image, ImageFont, ImageDraw
 
-def process_job(logo):
-    overlay_text = "form_data_dict['overlay_text']"
+def process_job(overlay_text, logo):
+    #overlay_text = "form_data_dict['overlay_text']"
     #logo = form_data_dict['logo']
 
     title_font = ImageFont.truetype('PlayfairDisplay-Black.ttf', 20)

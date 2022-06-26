@@ -19,14 +19,14 @@ def handle_submit():
     logo = Image.open(logo)
     logo.save("logo.png")
 
-    time.sleep(2)
+    #time.sleep(2)
     print("Yamuka")
 
     with open("logo.png", "rb") as img_file:
         print("res")
         b64_string = base64.b64encode(img_file.read())
         print("string is ", b64_string)
-    result = que.enqueue(process_job, b64_string)
+    result = que.enqueue(process_job, request.form['overlay_text'], b64_string)
     time.sleep(4)
     return send_file("../result.jpg", mimetype='image/jpg', as_attachment=True, download_name="result.jpg")
 
