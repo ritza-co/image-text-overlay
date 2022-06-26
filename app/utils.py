@@ -3,9 +3,6 @@ import io, base64
 from PIL import Image, ImageFont, ImageDraw
 
 def process_job(overlay_text, logo):
-    #overlay_text = "form_data_dict['overlay_text']"
-    #logo = form_data_dict['logo']
-
     title_font = ImageFont.truetype('PlayfairDisplay-Black.ttf', 20)
 
     my_image = Image.open("fall-season.jpeg")
@@ -16,7 +13,7 @@ def process_job(overlay_text, logo):
 
     slice_str = str(logo)[2:-1]
 
-    print("Job started ",slice_str)
+    print("Job started")
 
     if len(overlay_text) > 25:
         string_center_index = len(overlay_text) / 2
@@ -32,8 +29,6 @@ def process_job(overlay_text, logo):
 
     if logo:
         img = Image.open(io.BytesIO(base64.decodebytes(bytes(slice_str, "utf-8"))))
-        #logo = logo['logo']
-        #logo = Image.open(logo)
         logo_width, logo_height = img.size
         logo = img.convert("RGBA")
         my_image.paste(logo, (width - logo_width, height - logo_height))
