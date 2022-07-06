@@ -2,7 +2,7 @@ from flask import send_file
 import io, base64
 from PIL import Image, ImageFont, ImageDraw
 
-def process_job(overlay_text, logo):
+def process_job(overlay_text, logo=None):
     title_font = ImageFont.truetype('PlayfairDisplay-Black.ttf', 20)
 
     my_image = Image.open("fall-season.jpeg")

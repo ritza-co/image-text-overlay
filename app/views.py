@@ -13,14 +13,19 @@ def index():
 def handle_submit():
     que = Queue(connection=conn)
 
-    logo = request.files['logo']
-    logo = Image.open(logo)
-    logo.save("logo.png")
+    if request.files:
+        logo = request.files['logo']
+        logo = Image.open(logo)
+        logo.save("logo.png")
 
-    with open("logo.png", "rb") as img_file:
-        print("res")
-        b64_string = base64.b64encode(img_file.read())
+        with open("logo.png", "rb") as img_file:
+            print("res")
+            b64_string = base64.b64encode(img_file.read())
 
-    result = que.enqueue(process_job, request.form['overlay_text'], b64_string)
-    time.sleep(3)
-    return send_file("../result.jpg", mimetype='image/jpg', as_attachment=True, download_name="result.jpg")
+        result = que.enqueue(process_job, request.form['overlay_text'], b64_string)
+        time.sleep(3)
+        return send_file("../result.jpg", mimetype='image/jpg', as_attachment=True, download_name="result.jpg")
+    else:
+        result = que.enqueue(process_job, request.form['overlay_text'])
+        time.sleep(3)
+        return send_file("../result.jpg", mimetype='image/jpg', as_attachment=True, download_name="result.jpg")
